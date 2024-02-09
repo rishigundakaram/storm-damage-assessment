@@ -1,4 +1,4 @@
-## Storm-damage-assesment
+# Storm-damage-assesment
 
 Introduction
 Hurricane Maria was one of the most devastating natural disasters to hit the Caribbean, leaving a trail of destruction in its wake. Accurate and rapid assessment of building damage in the aftermath is crucial for effective response and recovery efforts. This project, developed as part of the EY Data Challenge, leverages advanced artificial intelligence (AI) and machine learning (ML) techniques to automatically distinguish between damaged and undamaged residential and commercial buildings using aerial imagery captured post-Hurricane Maria. Our solution aims to provide emergency responders, urban planners, and humanitarian organizations with critical information to prioritize aid, allocate resources efficiently, and plan long-term rebuilding strategies.
@@ -14,7 +14,9 @@ This command initiates the training process for a Faster R-CNN model using the s
 For eval.py:
 To evaluate a model on a set of images, use the following command:
 
-```python eval.py --input_dir /directory/of/input/images --output_dir /directory/to/save/output/images --chkpt /path/to/model/checkpoint --nms True```
+```
+python eval.py --input_dir /directory/of/input/images --output_dir /directory/to/save/output/images --chkpt /path/to/model/checkpoint --nms True
+```
 
 This command evaluates a trained model using images from the specified input directory, saves the output images to the output directory, and uses the provided model checkpoint. The --nms flag enables or disables non-maximum suppression based on the provided boolean value.
 
@@ -51,3 +53,6 @@ storm-damage/
 │
 └── README.md # Documentation explaining the project's purpose, structure, and usage
 ```
+
+# Tips + Tricks
+1. Download the dataset from Roboflow in YoloV8 format and save it to ./data/roboflow
