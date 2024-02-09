@@ -1,4 +1,4 @@
-# Storm-damage-assesment
+## Storm-damage-assesment
 
 Introduction
 Hurricane Maria was one of the most devastating natural disasters to hit the Caribbean, leaving a trail of destruction in its wake. Accurate and rapid assessment of building damage in the aftermath is crucial for effective response and recovery efforts. This project, developed as part of the EY Data Challenge, leverages advanced artificial intelligence (AI) and machine learning (ML) techniques to automatically distinguish between damaged and undamaged residential and commercial buildings using aerial imagery captured post-Hurricane Maria. Our solution aims to provide emergency responders, urban planners, and humanitarian organizations with critical information to prioritize aid, allocate resources efficiently, and plan long-term rebuilding strategies.
