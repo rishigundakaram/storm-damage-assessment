@@ -1,3 +1,5 @@
+*
+!.gitignore
 data/raw/*
 data/building_footprints/*
 data/eval/*
@@ -8,3 +10,5 @@ data/test/*
 xView2_baseline/*
 weights/*
 *__pycache__/*
+*
+!.gitignore

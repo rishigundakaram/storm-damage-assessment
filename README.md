@@ -20,28 +20,32 @@ Project Directory Structure
 This section outlines the structure of the project directory, providing a clear overview of where to find specific scripts, datasets, and output directories. Each component of the project is organized into specific folders for ease of access and management.
 
 ```
-EY-Hurricane-Maria-Damage-Assessment/
+storm-damage/
 │
 ├── data/ # Directory containing the dataset for training and evaluation
-│ ├── train/ # Training dataset with annotated images
-│ └── test/ # Test dataset for evaluating the model
+│ ├── building_footprints/ # building_footprints from EY
+│ ├── test/ # Submission images from EY
+│ ├── roboflow/ # datasets downloaded from roboflow
+│ ├── intermediate/ # processed images that are then annotated in roboflow
+│ ├── eval/ # annotations of images (output of eval.py)
+│ └── raw/ # raw data from EY
+
+├── EDA/ # Contains saved models and checkpoints
+│ ├── tile_generation.ipynb/ # deterministic tile data generation filtered for buildings
+│ └── ... # Other EY notebooks
 │
-├── models/ # Contains saved models and checkpoints
-│ ├── faster_rcnn/ # Saved Faster R-CNN model checkpoints
-│ └── ... # Other model checkpoints (if any)
+├── utils/ # utils for training
+│ └── data.py/ # dataset class for Pytorch for dealing with YOLOv8 format
 │
-├── src/ # Source code for the project
-│ ├── train.py # Script for training the model
-│ ├── eval.py # Script for evaluating the model
-│ └── utils/ # Utility scripts and modules
+├── weights/ # Output directory for model weights
 │
-├── outputs/ # Output directory for evaluation scripts
-│ ├── detected_images/ # Images with damage detections
-│ └── reports/ # Evaluation reports and metrics
+├── xBD_utils/ # utils for working with xBD_dataset
 │
-├── notebooks/ # Jupyter notebooks for experiments and analyses
+├── xView2_baseline/ # git repo for example usuage of xBD dataset
 │
-├── requirements.txt # The required libraries and dependencies for the project
+├── train.py # training file for FasterRCNN
+│
+├── eval.py # evaluation file for FasterRCNN
 │
 └── README.md # Documentation explaining the project's purpose, structure, and usage
 ```
