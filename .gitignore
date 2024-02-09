@@ -1,0 +1,10 @@
+data/raw/*
+data/building_footprints/*
+data/eval/*
+data/intermediate/*
+data/roboflow/*
+data/test/*
+*Zone.Identifier
+xView2_baseline/*
+weights/*
+*__pycache__/*
