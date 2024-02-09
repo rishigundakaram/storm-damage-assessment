@@ -5,14 +5,14 @@ Hurricane Maria was one of the most devastating natural disasters to hit the Car
 
 For train.py:
 To train a Faster R-CNN model on your dataset, use the following command:
-`python train.py --data /path/to/dataset --output /path/to/save/model --num_workers 4`
+```python train.py --data /path/to/dataset --output /path/to/save/model --num_workers 4```
 
 This command initiates the training process for a Faster R-CNN model using the specified dataset. The trained model will be saved to the provided output path. Adjust the --num_workers parameter according to your system's capabilities for optimal data loading performance.
 
 For eval.py:
 To evaluate a model on a set of images, use the following command:
 
-`python eval.py --input_dir /directory/of/input/images --output_dir /directory/to/save/output/images --chkpt /path/to/model/checkpoint --nms True`
+```python eval.py --input_dir /directory/of/input/images --output_dir /directory/to/save/output/images --chkpt /path/to/model/checkpoint --nms True```
 
 This command evaluates a trained model using images from the specified input directory, saves the output images to the output directory, and uses the provided model checkpoint. The --nms flag enables or disables non-maximum suppression based on the provided boolean value.
 
