@@ -36,11 +36,12 @@ def predict(model, device, img_path):
 
 def draw_boxes(img, prediction):
     classes = {
-        0: "damagedcommercialbuilding", 
-        1: "damagedresidentialbuilding",
-        2: "undamagedcommercialbuilding",
-        3: "undamagedresidentialbuilding",
-        4: "background"
+        0: "background",
+        1: "damagedcommercialbuilding", 
+        2: "damagedresidentialbuilding",
+        3: "undamagedcommercialbuilding",
+        4: "undamagedresidentialbuilding",
+        
     }
     # Ensure the image is in RGB mode
     if img.mode != 'RGB':
@@ -104,6 +105,8 @@ def main(input_dir, output_dir, checkpoint_path, nms=False):
             img_with_boxes, predictions_text = draw_boxes(img, predictions_nms)
             img_with_boxes.save(os.path.join(output_dir, img_file))
             save_predictions_to_txt(predictions_text, img_file, output_dir)
+    # zip all of the txt files
+    os.system(f"zip -j {output_dir}/predictions.zip {output_dir}/*.txt")
 
 
 

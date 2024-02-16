@@ -26,7 +26,6 @@ def get_transform():
     return T.Compose(custom_transforms)
 
 
-
 if __name__ == '__main__':
     arg_parser = argparse.ArgumentParser(description='Train a Faster R-CNN model')
     arg_parser.add_argument('--data', type=str, help='Path to the dataset')
@@ -45,7 +44,7 @@ if __name__ == '__main__':
     train_dataset = YOLOv8Dataset(os.path.join(train_dir, 'images'), os.path.join(train_dir, 'labels'), transform=get_transform())
     val_dataset = YOLOv8Dataset(os.path.join(val_dir, 'images'),os.path.join(val_dir, 'labels'))
 
-    train_loader = DataLoader(train_dataset, batch_size=1, shuffle=True, num_workers=num_workers, collate_fn=lambda x: tuple(zip(*x)))
+    train_loader = DataLoader(train_dataset, batch_size=4, shuffle=True, num_workers=num_workers, collate_fn=lambda x: tuple(zip(*x)))
     val_loader = DataLoader(val_dataset, batch_size=1, shuffle=False, num_workers=num_workers, collate_fn=lambda x: tuple(zip(*x)))
     
     num_classes = 5
@@ -58,7 +57,9 @@ if __name__ == '__main__':
     # Parameters and optimizer
     params = [p for p in model.parameters() if p.requires_grad]
     optimizer = torch.optim.Adam(params, lr=0.0001, weight_decay=0)
-
+    
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
     # Training loop
     num_epochs = 1000
     for epoch in range(num_epochs):
@@ -75,11 +76,8 @@ if __name__ == '__main__':
             optimizer.zero_grad()
             losses.backward()
             optimizer.step()
-            # exit(1)
         print(f"Epoch: {epoch+1}, Loss: {sum(total_loss)/len(total_loss)}")
-
-    # Save the model with a unique name
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-    model_path = os.path.join(output_dir, 'model.pth')  
-    torch.save(model.state_dict(), model_path)
+        # save the model every 5 epochs
+        if (epoch+1) % 5 == 0:
+            model_path = os.path.join(output_dir, f'model_{epoch+1}.pth')  
+            torch.save(model.state_dict(), model_path)
